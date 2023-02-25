@@ -92,12 +92,16 @@ def localize_colors(frame, colorlower, colorUpper, color):
 def mount_frame(frame):
     # Redimensionar o quadro, esbater-lo e converte-lo para o HSV
     frame = imutils.resize(frame, width=800)
-    frame = equalize(frame)
+    # frame = equalize(frame)
 
-    frame = localize_colors(frame, greenLower, greenUpper, "VERDE")
-    frame = localize_colors(frame, redLower, redUpper, "VERMELHO")
-    frame = localize_colors(frame, yellowLower, yellowUpper, "AMARELO")
-    frame = localize_colors(frame, blueLower, blueUpper, "AZUL")
+    frame = localize_colors(frame, greenLower, greenUpper, "VERDE", [0,100,0])
+    frame = localize_colors(frame, redLower, redUpper, "VERMELHO", [0,0,255])
+    frame = localize_colors(frame, yellowLower, yellowUpper, "AMARELO", [0,255,255])
+    frame = localize_colors(frame, blueLower, blueUpper, "AZUL", [205,0,0])
+    frame = localize_colors(frame, purpleLower, purpleUpper, "ROXO", [255,0,147])
+    frame = localize_colors(frame, orangeLower, orangeUpper, "LARANJA", [0,140,255])
+    frame = localize_colors(frame, cyanLower, cyanUpper, "CIANO", [255,255,0])
+    frame = localize_colors(frame, pinkLower, pinkUpper, "ROSA", [147,20,255])
     
     return frame
 
@@ -174,6 +178,7 @@ cyanUpper = (92,255,255)
 #rosa
 pinkLower = (150,63,184)
 pinkUpper = (177,238,255)
+
 def main():
     args = get_arguments()
 
